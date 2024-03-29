@@ -33,6 +33,7 @@ public class HomeController {
 	
 	// /login(userid=U002, passwd=1234)
 	@RequestMapping("/login")
+	//public ModelAndView login(@Param String userid, @Param String passwd, HttpServletRequest request) {
 	public ModelAndView login(HttpServletRequest request) {
 		
 		String userid = request.getParameter("userid");

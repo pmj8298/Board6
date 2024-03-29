@@ -23,6 +23,13 @@
 	<div>&nbsp;</div>
 	<div><a href="/Board/List?menu_id=MENU01">게시물 목록</a></div>
 	<div><a href="/Board/WriteForm?menu_id=MENU01">게시물 등록</a></div>
+	<div>&nbsp;</div>
+	<div><a href="/loginForm">로그인</a></div>
+	<div>
+	  ${login.username} 님 환영합니다<br>
+	  당신의 가입일은 ${login.indate} 입니다<br>
+	</div>
+	<div><a href="/logout">로그아웃</a></div>
  </main>
 </body>
 </html>

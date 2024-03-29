@@ -77,7 +77,10 @@
     WHERE USERID   = #{userid}
   </delete>
   
-  <!-- 로그인 -->
+  <!-- 로그인 
+  arg0 = userid
+  arg1 = passwd
+  -->
   <select id="login">
   SELECT  USERID,
           PASSWD,
