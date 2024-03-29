@@ -1,12 +1,14 @@
-package com.board.intercepter;
+package com.board.interceptor;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class LoginCheckIntercepter implements HandlerInterceptor{
+@Component
+public class LoginCheckInterceptor implements HandlerInterceptor{
 
 	@Override
 	public boolean preHandle(
@@ -22,14 +24,16 @@ public class LoginCheckIntercepter implements HandlerInterceptor{
 		
 		// 요청한 주소정보 확인
 		String requestUrl = request.getRequestURL().toString();
-		// /login 페이지는 체크에서 제외한다
-		if(requestUrl.contains("/login")) {
-			return true;
-		}
+		// /login 페이지는 체크에서 제외한다(제외 설정)
+		// Interface 설정하는 곳에서 해당경로를 제외할 때 if()필요없다
+		// 로그인 안된 사람은 회원게시판 못가게 만들고, 로그인 필요없는 게시판은 여기서 튕굼
+		//if(requestUrl.contains("/login")) {
+		//	return true; // 로그인 체크를 중단
+		// }
 		
 		//---------------------------------------------------
 		if(obj == null) {
-			// 로그인되어 있지 않다면 /loginForm 으로 이동
+			// 로그인되어 있지 않다면 /loginForm 으로 이동 -> 이게 핵심!!
 			response.sendRedirect("/loginForm");
 			return false;
 		}
